@@ -1,4 +1,4 @@
-        mm20 = sum(fechamentos[-20:]) / 20
+        mm20 = sum(fechamentos[-20:]) / 20 
         mm50 = sum(fechamentos[-50:]) / 50
         indicador = rsi(fechamentos)
         pos = estado['posicoes'].get(moeda)
