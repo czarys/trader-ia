@@ -1,13 +1,16 @@
-# Trader IA - teste de ativacao
-name: Trader IA - Simulacao
+name: Trader IA - Simulacao BTC ETH
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: '11 * * * *'
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: trader-ia-paper
+  cancel-in-progress: false
 
 jobs:
   simulacao:
@@ -16,11 +19,23 @@ jobs:
     steps:
       - name: Baixar codigo
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - name: Instalar Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
       - name: Executar Trader IA
         run: python trader.py
+
+      - name: Salvar saldo ficticio e historico
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add estado_trader.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Atualizar simulacao do Trader IA"
+            git push
+          fi
