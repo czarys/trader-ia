@@ -3,7 +3,7 @@ name: Trader IA - Simulacao BTC ETH
 on:
   workflow_dispatch:
   schedule:
-    - cron: '11 * * * *'
+    - cron: '*/5 * * * *'
 
 permissions:
   contents: write
