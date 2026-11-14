@@ -1,0 +1,20 @@
+name: Teste controlado do Trader IA
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  teste:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Baixar codigo
+        uses: actions/checkout@v4
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Testar compra, alvo, stop e persistencia sem rede
+        run: python testes_trader.py
