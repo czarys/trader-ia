@@ -1,8 +1,15 @@
 {
-  "saldo": 900.0,
-  "posicoes": {},
+  "saldo": 450.0,
+  "posicoes": {
+    "BTC-USD": {
+      "entrada": 58170.15,
+      "quantidade": 0.007735926415867932,
+      "stop": 57937.4694,
+      "alvo": 58635.5112
+    }
+  },
   "ultimo_candle": {
-    "BTC-USD": 1795231200,
-    "ETH-USD": 1795231200
+    "BTC-USD": 1795260600,
+    "ETH-USD": 1795260600
   }
 }
